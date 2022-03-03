@@ -33,4 +33,27 @@ NameError:
   uninitialized constant BirthdayList
 ```
 
-So created birthday_list.rb lib file and defined BirthdayList class, then fleshed out first unit test
+So created birthday_list.rb lib file and defined BirthdayList class, then fleshed out first unit test expecting it to respond to add_birthday method with 2 arguments, one each for friend name and birthday - failed of course so added method with arguments and instance variables then, expecting an array of hashes to be the appropriate data structure, refactored test to:
+
+```
+describe BirthdayList do
+  subject(:birthday_list) { BirthdayList.new }
+  
+  describe '#add_birthday' do
+    it 'adds a friend name and birthday to a list' do
+      expect(birthday_list.add_birthday('Bobson Dugnutt', 'January 1')).to eq [{ name: 'Bobson Dugnutt', birthday: 'January 1'} ]
+    end
+  end
+end
+```
+
+got error:
+
+```
+Failure/Error: expect(birthday_list.add_birthday('Bobson Dugnutt', 'January 1')).to eq [{ name: 'Bobson Dugnutt', birthday: 'January 1'} ]
+     
+       expected: [{:birthday=>"January 1", :name=>"Bobson Dugnutt"}]
+            got: "January 1"
+```
+
+so needed to initalize class with empty array and flesh out add_birthday method - this turned RSpec green
