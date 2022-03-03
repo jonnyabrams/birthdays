@@ -56,4 +56,46 @@ Failure/Error: expect(birthday_list.add_birthday('Bobson Dugnutt', 'January 1'))
             got: "January 1"
 ```
 
-so needed to initalize class with empty array and flesh out add_birthday method - this turned RSpec green
+so needed to initalize class with empty array and flesh out add_birthday method - this turned RSpec green - wrote unit test expecting it to add a second birthday to check data structure - this passed
+
+test on IRB, all looks fine:
+
+```
+jonnyabrams@JONNYs-MacBook-Pro birthdays % irb -r './lib/birthday_list.rb'
+3.0.2 :001 > birthday_list = BirthdayList.new
+ => #<BirthdayList:0x0000000126a39f40 @birthdays=[]> 
+3.0.2 :002 > birthday_list.add_birthday('Bobson Dugnutt', 'January 1')
+ => [{:name=>"Bobson Dugnutt", :birthday=>"January 1"}] 
+3.0.2 :003 > birthday_list.add_birthday('Dwight Rortugal', 'July 10')
+ => [{:name=>"Bobson Dugnutt", :birthday=>"January 1"}, {:name=>"Dwight Rortugal", :birthday=>"July 10"}] 
+ ```
+
+ Onto next requirement, show all birthdays - unit test:
+
+ ```
+  it 'can print all birthdays method' do
+    birthday_list.add_birthday('Bobson Dugnutt', 'January 1')
+    birthday_list.add_birthday('Dwight Rortugal', 'July 10')
+    expect(birthday_list.print_all_birthdays).to eq 'Bobson Dugnutt: January 1\nDwight Rortugal: July 10'
+  end
+  ```
+
+undefined method, so made it:
+
+```
+  def print_all_birthdays
+    @birthdays.each do |bday|
+      puts "#{bday[:name]}: #{bday[:birthday]}"
+    end
+  end
+```
+
+and made unit test:
+
+```
+ it 'can print all birthdays method' do
+    birthday_list.add_birthday('Bobson Dugnutt', 'January 1')
+    birthday_list.add_birthday('Dwight Rortugal', 'July 10')
+    expect(birthday_list.print_all_birthdays).to eq 'Bobson Dugnutt: January 1\nDwight Rortugal: July 10'
+  end
+```

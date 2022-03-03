@@ -8,4 +8,10 @@ class BirthdayList
     @birthday = birthday
     @birthdays << { name: @friend, birthday: @birthday }
   end
+
+  def print_all_birthdays
+    @birthdays.each do |bday|
+      puts "#{bday[:name]}: #{bday[:birthday]}"
+    end
+  end
 end
