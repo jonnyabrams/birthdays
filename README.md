@@ -1,17 +1,3 @@
-### Quick Start
-
-Fork this repository to your github account and clone it to your machine. Then install the dependencies:
-```bash
-> git clone https://github.com/makersacademy/birthdays.git
-> cd birthdays
-> bundle
-```
-
-### Instructions
-
-- Test-drive an implementation of the requirements
-- Make sure your code is [linted](https://github.com/rubocop-hq/rubocop)
-- [Open a PR](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests) when you've finished
 
 ### Requirements
 
@@ -24,11 +10,27 @@ More requirements:
 - Test-drive extracting a birthday class
 - Isolate your birthday list class using a mock for Birthday
 
-### TDD resources
+Initial feature test:
 
-- https://github.com/makersacademy/course/blob/master/pills/tdd.md
-- https://github.com/makersacademy/course/blob/master/pills/tdd_quality_discussion.md
+```
+jonnyabrams@JONNYs-MacBook-Pro birthdays % irb
+3.0.2 :001 > birthday_list.add(birthday)
+(irb):1:in `<main>': undefined local variable or method `birthday_list' for main:Object (NameError)
+        from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/lib/ruby/gems/3.0.0/gems/irb-1.3.5/exe/irb:11:in `<top (required)>'
+        from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `load'
+        from /Users/jonnyabrams/.rvm/rubies/ruby-3.0.2/bin/irb:23:in `<main>'
+```
 
-### Mocking
+Then wrote scaffolding for unit tests:
 
-- https://relishapp.com/rspec/rspec-mocks/docs/basics/test-doubles
+```
+Failure/Error:
+  describe BirthdayList do
+  
+  end
+
+NameError:
+  uninitialized constant BirthdayList
+```
+
+So created birthday_list.rb lib file and defined BirthdayList class, then fleshed out first unit test
